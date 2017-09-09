@@ -1,5 +1,4 @@
 import React from 'react';
-import HelloWorld from '../components/helloWorld';
 
 export default class Router extends React.Component {
   constructor(props, _railsContext) {
@@ -8,7 +7,9 @@ export default class Router extends React.Component {
   render() {
     return (
       <div>
-        <HelloWorld text={this.props.index} />
+        {this.props.articles.map((v, i) => (
+          <p>{v.title}</p>
+        ))}
       </div>
     );
   }

@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
 
   def render_for_react(props: {}, status: 200)
     if request.format.json?
-      response.headers["Cache-Control"] = "no-cache, no-store"
-      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-      response.headers["Pragma"] = "no-cache"
+      # response.headers["Cache-Control"] = "no-cache, no-store"
+      # response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+      # response.headers["Pragma"] = "no-cache"
       render(
         json: common_props.merge(props),
         status: status,
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
           props: common_props.merge(props).as_json,
         ),
         layout: true,
-        status: status,
+        # status: status,
       )
     end
   end

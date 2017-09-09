@@ -2,7 +2,7 @@ class ArticleController < ApplicationController
   def index
     render_for_react(
       props: {
-        index: "Hello"
+        articles: Article.all
       },
     )
   end
