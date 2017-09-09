@@ -12,10 +12,10 @@ const config = {
       'babel-polyfill'
     ],
     app: [
-      './frontend//src/client.js',
+      './frontend/src/client.js',
     ],
     server: [
-      './frontend//src/server.js',
+      './frontend/src/server.js',
     ]
   },
   output: {

@@ -1,17 +1,19 @@
 {
   "name": "blog",
-  "private": true,
-  "dependencies": {},
   "version": "0.0.1",
-  "main": "index.js",
-  "repository": "git@github.com:khrtz/blog.git",
-  "author": "khrtz <garula.oze498@gmail.com>",
-  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": "6.9.0",
+    "npm": "4.1.1"
+  },
   "scripts": {
     "serve": "./node_modules/.bin/http-server -p 9091",
     "build": "./node_modules/.bin/webpack",
     "dev": "./node_modules/.bin/webpack-dev-server --progress --colors --hot",
-    "watch": "./node_modules/.bin/webpack --watch"
+    "watch": "./node_modules/.bin/webpack --watch",
+    "postinstall": "cd client && yarn install",
+    "rails-server": "echo 'visit http://localhost:3000/hello_world' && foreman start -f Procfile.dev",
+    "test": "rspec"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
