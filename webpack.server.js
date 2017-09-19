@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const devBuild = process.env.NODE_ENV !== 'production';
 const nodeEnv = devBuild ? 'development' : 'production';
@@ -41,14 +42,20 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: {
-          loader: 'css-loader/locals',
-          options: {
-            modules: true,
-            importLoaders: 0,
-            localIdentName: '[name]__[local]__[hash:base64:5]'
-          }
-        }
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+                modules: true,
+                importLoaders: 1,
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              },
+            },
+          ],
+        }),
       },
     ],
   },
@@ -56,6 +63,10 @@ const config = {
     extensions: ['*', '.js'],
   },
   plugins: [
+    new ExtractTextPlugin({
+      filename: path.join('../stylesheets/app.css'),
+      allChunks: true,
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(nodeEnv),

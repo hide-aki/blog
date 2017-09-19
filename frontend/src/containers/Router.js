@@ -1,4 +1,5 @@
 import React from 'react';
+import TopContainer from './TopContainer/TopContainer';
 
 export default class Router extends React.Component {
   constructor(props, _railsContext) {
@@ -7,9 +8,7 @@ export default class Router extends React.Component {
   render() {
     return (
       <div>
-        {this.props.articles.map((v, i) => (
-          <p>{v.title}</p>
-        ))}
+        <TopContainer articles={this.props.articles} />
       </div>
     );
   }

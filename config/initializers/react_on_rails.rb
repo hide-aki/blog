@@ -8,7 +8,12 @@ ReactOnRails.configure do |config|
 
   # react_on_railsに従うとこっち
   # config.webpack_generated_files = %w( webpack-bundle.js )
-  config.webpack_generated_files = %w( app-bundle.js server-bundle.js vendor-bundle.js )
+  # config.webpack_generated_files = %w( app-bundle.js server-bundle.js vendor-bundle.js )
+
+  # Server Side Renderingの設定 SSR時のCSS読み込みのためCSSを生成
+  config.webpack_generated_files = %w[ app-bundle.js vendor-bundle.js app-bundle.css
+                                       vendor-bundle.css server-bundle.js ]
+
 
 
   # This is the file used for server rendering of React when using `(prerender: true)`
